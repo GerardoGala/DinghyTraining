@@ -74,13 +74,19 @@ const greenTargetIcon = L.icon({
   const TopLeftControls = L.Control.extend({
     options: { position: 'topleft' },
     onAdd: function(map) {
-      const container = L.DomUtil.create('div', 'top-left-controls-container');
+  const container = L.DomUtil.create('div', 'top-left-controls-container');
+container.style.display = 'flex';
+container.style.flexDirection = 'row-reverse';
+container.style.alignItems = 'flex-start';
+container.style.gap = '8px';
       
       // Stop map click/scroll events from bleeding through the panel
       L.DomEvent.disableClickPropagation(container);
 
       // Wind Indicator
-      windControlDiv = L.DomUtil.create('div', 'wind-indicator-container', container);
+      // Wind Indicator
+windControlDiv = L.DomUtil.create('div', 'wind-indicator-container', container);
+windControlDiv.style.float = 'right';
       windControlDiv.style.background = 'white';
       windControlDiv.style.padding = '8px';
       windControlDiv.style.borderRadius = '5px';
