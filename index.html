@@ -25,48 +25,10 @@
 </head>
 <body>
  <div class="container">
-    <div id="pointOfSailControl" class="flex-grow-1" style="flex: 1;">
-        <h3>Point of Sail</h3>
-        <label>
-            <input type="radio"
-                  name="pointOfSail"
-                  value="45">
-            Close Hauled
-        </label>
 
-        <label>
-            <input type="radio"
-                  name="pointOfSail"
-                  value="60">
-            Close Reach
-        </label>
-
-        <label>
-            <input type="radio"
-                  name="pointOfSail"
-              value="90">
-            Beam Reach
-        </label>
-
-        <label>
-            <input type="radio"
-                  name="pointOfSail"
-                  value="135">
-            Broad Reach
-        </label>
-
-        <label>
-            <input type="radio"
-                  name="pointOfSail"
-                  value="180">
-            Run
-        </label>
-
-    </div>
     <div id="map"class="flex-grow-1" style="flex: 4;">
     </div>
     <div id="input-pane"class="flex-grow-1" style="flex: 7;">
-
       <div id="boomControl" class="input-section">
         <h3>MainSheet</h3>
         <div class="control-row">
@@ -130,7 +92,6 @@
         </div>
       </div>
 
-
       <div id="outhaulControl" class="input-section">
         <div class="control-column">
           <h3>Outhaul</h3>
@@ -140,10 +101,47 @@
           <button class="control-button" data-control="outhaul" data-value="Full" onclick="updateOuthaulControl('Full')">FULL</button>
         </div>
       </div>
+    </div>
+    <div id="pointOfSailControl" class="flex-grow-1" style="flex: 1;">
+        <h3>Point of Sail</h3>
+        <label>
+            <input type="radio"
+                  name="pointOfSail"
+                  value="45">
+            Close Hauled
+        </label>
+
+        <label>
+            <input type="radio"
+                  name="pointOfSail"
+                  value="60">
+            Close Reach
+        </label>
+
+        <label>
+            <input type="radio"
+                  name="pointOfSail"
+              value="90">
+            Beam Reach
+        </label>
+
+        <label>
+            <input type="radio"
+                  name="pointOfSail"
+                  value="135">
+            Broad Reach
+        </label>
+
+        <label>
+            <input type="radio"
+                  name="pointOfSail"
+                  value="180">
+            Run
+        </label>
+
 
     </div>
   </div>
-
   <style>
 
     .row-directions .control-button {
