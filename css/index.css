@@ -1,0 +1,284 @@
+/* =========================================================
+   DINGHY TRAINING
+   San Juan Academy Visual Theme
+   ========================================================= */
+
+
+/* =========================================================
+   COLOR VARIABLES
+   ========================================================= */
+
+:root {
+    --sja-blue: #3b87fa;
+    --sja-blue-dark: #2674e8;
+    --sja-background: #f0f7fc;
+    --sja-panel: #ffffff;
+    --sja-border: #cfe2f3;
+    --sja-text: #243447;
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+html,
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background-color: var(--sja-background);
+    color: var(--sja-text);
+    height: 100dvh;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+/* Mobile: vertical stack */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+/* Dashboard occupies only the space it needs */
+
+#dashboard-container {
+    flex: 0 0 auto;
+}
+
+
+/* Input area consumes remaining space */
+
+#input-container {
+    flex: 1 1 0%;
+    min-height: 0;
+}
+
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+#controls {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: var(--sja-background);
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   INPUT SECTIONS
+   ========================================================= */
+
+/* Hide inactive sections */
+
+.input-section:not(.active) {
+    display: none !important;
+}
+
+
+/* Active section */
+
+.input-section.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    height: 100%;
+    width: 100%;
+    gap: 2px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CONTROL ROWS / COLUMNS
+   ========================================================= */
+
+.control-column {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 2px;
+}
+
+
+.control-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex: 1;
+    gap: 2px;
+    min-height: 0;
+}
+
+
+/* Rows containing multiple buttons */
+
+#sheetControl div,
+#daggerboardControl div,
+#sailorPositionControl div,
+#ilcaControl div,
+#vangControl div,
+#downhaulControl div,
+#outhaulControl div {
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+}
+
+
+/* Direction and adjustment rows */
+
+.row-directions .control-button,
+.row-adjustments .control-button {
+    flex: 1;
+}
+
+
+/* =========================================================
+   CONTROL BUTTONS
+   ========================================================= */
+
+.control-button {
+    background: var(--sja-blue);
+    color: white;
+    border: none;
+
+    flex: 1;
+    height: 100%;
+    margin: 0;
+    padding: 10px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Segoe UI", sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+
+    box-sizing: border-box;
+    text-transform: uppercase;
+
+    border-radius: 4px;
+}
+
+
+/* Active control button */
+
+.control-button.active {
+    background: var(--sja-blue-dark) !important;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+
+/* =========================================================
+   DESKTOP / LAPTOP
+   ========================================================= */
+
+@media screen and (min-width: 768px) {
+
+    .container {
+        flex-direction: row;
+    }
+
+    #map {
+        flex: 1;
+        width: auto;
+        border-bottom: none;
+    }
+
+    #controls {
+        flex: 0 0 300px;
+        width: 300px;
+        max-width: 300px;
+        border-right: 2px solid #333;
+    }
+}
+
+
+/* =========================================================
+   CAPSIZED / DANGER ANIMATION
+   ========================================================= */
+
+@keyframes intenseShake {
+
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(0px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(2px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(2px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
+
+
+.danger-shake {
+    animation: intenseShake 0.4s infinite;
+}
+
+
+/* =========================================================
+   ALERT OVERLAY
+   ========================================================= */
+
+.overlay-title {
+    font-size: 2.2rem;
+    margin: 10px 0;
+    color: #ffcc00;
+}
+
+
+.overlay-text {
+    font-size: 1.4rem;
+    color: #f8fafc;
+    padding: 0 20px;
+}

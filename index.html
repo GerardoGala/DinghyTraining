@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <!-- Reference to your new external CSS file -->
-  <link rel="stylesheet" href="css/game.css">
+  <link rel="stylesheet" href="css/index.css">
 
   <!-- STEP 1: Load Core Map Engines & Global Variables First -->
   <script src="js/globalSimulationData.js"></script>
@@ -151,109 +151,7 @@
 
   </div>
 
-  <style>
-
-    .row-directions .control-button {
-      flex: 1;
-    }
-
-    .row-adjustments .control-button {
-      flex: 1;
-    }
-  </style>
-
-  <style>
-
-
-/* Hide inactive sections cleanly */
-.input-section:not(.active) {
-  display: none !important;
-}
-
-/* Make active sections fill the container entirely and distribute space evenly */
-.input-section.active {
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch; 
-  height: 100%;
-  width: 100%;
-  gap: 2px;            
-  box-sizing: border-box;
-}
-
-
-
-
-/* Column layouts stretch buttons vertically */
-.control-column {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  gap: 2px;
-}
-
-/* Row layouts distribute buttons horizontally across the screen */
-.control-row {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  flex: 1;                /* FORCES rows to split the parent vertical height equally */
-  gap: 2px;               /* Adds uniform spacing between buttons */
-  min-height: 0;          /* Prevents rows from bursting past flex parent bounds */
-}
-
-
-
-  </style>
-
-  <style>
-    .row-directions .control-button {
-      flex: 1;
-    }
-
-    .row-adjustments .control-button {
-      flex: 1;
-    }
-
-
-    /* Make active sections fill the container entirely and distribute rows evenly */
-    .input-section.active {
-      display: flex;
-      flex-direction: column;
-      justify-content: stretch;
-      height: 100%;
-      width: 100%;
-      gap: 2px;            /* Matches the black gap thickness from the dashboard */
-      box-sizing: border-box;
-    }
-
-    /* Buttons stretch to fill 100% of their available space evenly */
-    .control-button {
-      background: #007bff;
-      color: white;
-      border: none;
-      flex: 1;                  
-      height: 100%;
-      margin: 0;
-      padding: 10px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-weight: bold;
-      font-size: 1.1rem;
-      box-sizing: border-box;
-      text-transform: uppercase;
-    }
-
-    .control-button.active {
-      background: #343a40 !important; /* dark accent */
-      color: #fff;
-      border: 2px solid #fff;
-    }
-  </style>
-
+  
   <script>
       // Point of Sail selector
       document.querySelectorAll('input[name="pointOfSail"]')
