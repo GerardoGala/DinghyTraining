@@ -74,7 +74,7 @@
 <!-- input.html -->
 <div id="input-pane">
 
-<div id="boomControl" class="input-section active">
+<div id="boomControl" class="input-section">
   <div class="control-row">
     <!-- Upwind Ranges -->
     <button class="control-button" data-control="boom" data-value="0-8" onclick="updateBoomControl('0-8')">0° - 8°</button>
@@ -399,6 +399,16 @@
     }
 </script>
 
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const control = params.get("control");
+
+    const controlDiv = document.getElementById(control);
+
+    if (controlDiv) {
+        controlDiv.classList.add("active");
+    }
+</script>
 
   </body>
 </html>
