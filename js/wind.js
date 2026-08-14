@@ -3,8 +3,11 @@
 // Permanent training wind
 export let baseWindSpeedMS = 3.6; // 7 knots
 
-const WIND_DIRECTION = 0;          // 0° = North
-const WIND_SPEED_KNOTS = 7.0;      // permanent 7 knots
+const WIND_DIRECTION = 0; // 0° = North
+
+// Wind strength settings
+const LIGHT_WIND_KNOTS = 7;
+const STRONG_WIND_KNOTS = 12;
 
 
 /**
@@ -13,15 +16,41 @@ const WIND_SPEED_KNOTS = 7.0;      // permanent 7 knots
 export function fetchWind() {
 
     // Initialize global simulation data
-    window.globalSimulationData = window.globalSimulationData || {};
+    window.globalSimulationData =
+        window.globalSimulationData || {};
 
-    window.globalSimulationData.windDirection = WIND_DIRECTION;
-    window.globalSimulationData.windSpeed = WIND_SPEED_KNOTS;
+    window.globalSimulationData.windDirection =
+        WIND_DIRECTION;
 
-    // Update the display immediately
+    // Default = light wind
+    window.globalSimulationData.windSpeed =
+        LIGHT_WIND_KNOTS;
+
     updateWindDisplay();
+}
 
-    // No need for a continuously changing wind simulation.
+
+/**
+ * Change the wind strength.
+ */
+export function setWindStrength(strength) {
+
+    if (!window.globalSimulationData) {
+        return;
+    }
+
+    if (strength === "light") {
+
+        window.globalSimulationData.windSpeed =
+            LIGHT_WIND_KNOTS;
+
+    } else if (strength === "strong") {
+
+        window.globalSimulationData.windSpeed =
+            STRONG_WIND_KNOTS;
+    }
+
+    updateWindDisplay();
 }
 
 
@@ -30,10 +59,18 @@ export function fetchWind() {
  */
 function updateWindDisplay() {
 
-    const windDiv = document.getElementById("windStatus");
+    const windDiv =
+        document.getElementById("windStatus");
 
     if (windDiv) {
+
+        const windSpeed =
+            window.globalSimulationData.windSpeed;
+
+        const windDirection =
+            window.globalSimulationData.windDirection;
+
         windDiv.textContent =
-            `🌬️ Wind: ${WIND_SPEED_KNOTS} knots from ${WIND_DIRECTION}°`;
+            `🌬️ Wind: ${windSpeed} knots from ${windDirection}°`;
     }
 }
