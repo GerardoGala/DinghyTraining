@@ -25,10 +25,8 @@
 </head>
 <body>
  <div class="container">
-    <div id="pointOfSailControl">
-
-        <h1>Point of Sail</h1>
-
+    <div id="pointOfSailControl" class="flex-grow-1" style="flex: 1;">
+        <h3>Point of Sail</h3>
         <label>
             <input type="radio"
                   name="pointOfSail"
@@ -65,12 +63,12 @@
         </label>
 
     </div>
-    <div id="map">
+    <div id="map"class="flex-grow-1" style="flex: 6;">
     </div>
-    <div id="input-pane">
+    <div id="input-pane"class="flex-grow-1" style="flex: 5;">
 
       <div id="boomControl" class="input-section">
-        <h1>MainSheet</h1>
+        <h3>MainSheet</h3>
         <div class="control-row">
           <!-- Upwind Ranges -->
           <button class="control-button" data-control="boom" data-value="0-8" onclick="updateBoomControl('0-8')">0° - 8°</button>
@@ -90,8 +88,7 @@
 
       <div id="daggerboardControl" class="input-section">
         <div class="control-column">
-          <!-- 🎯 FIXED: Passed text strings to update functions and data-values -->
-          <h1>Daggerboard Control</h1>
+          <h3>Daggerboard Control</h3>
           <button class="control-button" data-control="daggerboard" data-value="Up" onclick="updateDaggerboardControl('CENTERBOARD UP')">Up</button>
           <button class="control-button" data-control="daggerboard" data-value="Center" onclick="updateDaggerboardControl('Center')">Center</button>
           <button class="control-button" data-control="daggerboard" data-value="Down" onclick="updateDaggerboardControl('Down')">Down</button>
@@ -99,7 +96,7 @@
       </div>
 
       <div id="sailorPositionControl" class="input-section">
-        <h1>Sailor Position</h1>
+        <h3>Sailor Position</h3>
         <div class="control-row">
           <button class="control-button" data-control="sailorPosition" data-value="Forward" onclick="updateSailorPosition('Forward')">Forward</button>
         </div>
@@ -116,8 +113,7 @@
 
       <div id="vangControl" class="input-section">
         <div class="control-column">
-          <h1>Vang</h1>
-          <!-- 🎯 FIXED LABELS TO MATCH THE AI COCHING TEXT EXACTLY -->
+          <h3>Vang</h3>
           <button class="control-button" data-control="vang" data-value="Max" onclick="updateVangControl('Max')">MAX</button>
           <button class="control-button" data-control="vang" data-value="Center" onclick="updateVangControl('Center')">CENTER</button>
           <button class="control-button" data-control="vang" data-value="Ease" onclick="updateVangControl('Ease')">EASE</button>
@@ -126,7 +122,7 @@
 
       <div id="downhaulControl" class="input-section">
         <div class="control-column">
-          <h1>Downhaul</h1>
+          <h3>Downhaul</h3>
           <!-- 🎯 FIXED FOR PERFECT CONSISTENCY WITH SCENARIO_TARGETS -->
           <button class="control-button" data-control="downhaul" data-value="Max Luff" onclick="updateDownhaulControl('Max Luff')">MAX LUFF</button>
           <button class="control-button" data-control="downhaul" data-value="Base" onclick="updateDownhaulControl('Base')">BASE</button>
@@ -137,7 +133,7 @@
 
       <div id="outhaulControl" class="input-section">
         <div class="control-column">
-          <h1>Outhaul</h1>
+          <h3>Outhaul</h3>
           <!-- 🎯 FIXED: Passed text strings to update functions and data-values -->
           <button class="control-button" data-control="outhaul" data-value="Flat" onclick="updateOuthaulControl('Flat')">FLAT</button>
           <button class="control-button" data-control="outhaul" data-value="Base" onclick="updateOuthaulControl('Base')">BASE</button>

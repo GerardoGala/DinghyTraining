@@ -40,12 +40,49 @@ function updateBoomControl(boomAngle) {
   setActiveInputButton('boom', String(boomAngle));
 }
 
+
+function updateSailorPosition(position) {
+  window.globalSimulationData.ILCA.sailorPosition = position;
+  setActiveInputButton('sailorPosition', position);
+ }
+
 function updateDaggerboardControl(daggerboard) {
     // daggerboard is already a string like "Down", "Center", or "Up"
      window.globalSimulationData.ILCA.daggerboard = daggerboard;
     // Highlight the input button and dashboard item
     setActiveInputButton('daggerboard', daggerboard);
 }
+
+function updateVangControl(vang) {
+    // vang is already a string like "Ease", "Center", or "Max"
+    window.globalSimulationData.ILCA.vang = vang;
+
+    const lbl = document.getElementById('vangLabel');
+    if (lbl) lbl.textContent = 'VANG = ' + vang.toUpperCase();
+
+    setActiveInputButton('vang', vang);
+}
+
+function updateDownhaulControl(downhaul) {
+    // downhaul is already a string like "Base", "Center", or "Max"
+    window.globalSimulationData.ILCA.downhaul = downhaul;
+
+    const lbl = document.getElementById('downhaulLabel');
+    if (lbl) lbl.textContent = 'DOWNHAUL = ' + downhaul.toUpperCase();
+
+    setActiveInputButton('downhaul', downhaul);
+}
+
+function updateOuthaulControl(outhaul) {
+    // outhaul is already a string like "Flat", "Base", or "Full"
+    window.globalSimulationData.ILCA.outhaul = outhaul;
+
+    const lbl = document.getElementById('outhaulLabel');
+    if (lbl) lbl.textContent = 'OUTHAUL = ' + outhaul.toUpperCase();
+
+    setActiveInputButton('outhaul', outhaul);
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
 

@@ -10,13 +10,12 @@ html, body {
   }
 
   /* Default: mobile layout (vertical stack) */
-  .container {
+.container {
     display: flex;
-    flex-direction: column; 
-  height: 100svh;          /* Fixes mobile clipping */
-  height: 100dvh;          /* Dynamically sizes layout to always fit screen space */
-
-  }
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100vh;
+}
 
   #dashboard-container {
   flex: 0 0 auto;        /* Take ONLY what space it naturally requires; do not shrink or grow */
