@@ -3,18 +3,15 @@ html, body {
     font-family: "Segoe UI", sans-serif;
     background-color: #1e1e1e;
     color: #d4d4d4;
-   height: 100svh;          /* Forces strict compliance with the mobile viewport layout */
-  height: 100dvh;          /* Modern backup: tracks fluid toolbar state changes smoothly */
-
+    height: 100dvh;
     overflow: hidden;
-  }
+}
 
   /* Default: mobile layout (vertical stack) */
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    height: 100vh;
+    height: 100%;
 }
 
   #dashboard-container {
@@ -27,13 +24,7 @@ html, body {
 }
 
 
-  #map {
-    flex: 1;
-    width: 100%;
-    border-bottom: 2px solid #333;
-    position: relative;   /* needed for absolute children */
-    min-height: 300px;    /* ensures visibility on mobile */
-  }
+
 
   #controls {
   display: flex;          /* Added so inner containers split vertical space */
