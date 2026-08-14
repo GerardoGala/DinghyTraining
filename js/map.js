@@ -63,12 +63,6 @@ const greenTargetIcon = L.icon({
   
 
 
-  // Add scale control to show distances on the map
-  L.control.scale({
-    position: 'bottomleft', 
-    imperial: false,        
-    metric: true            
-  }).addTo(map);
 
   // --- topleft ---
   const TopLeftControls = L.Control.extend({
