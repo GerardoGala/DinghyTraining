@@ -66,23 +66,9 @@ html, body {
 
 
 
-/* 3. THE FIXED, NO-MOTION FADE ANIMATION */
-@keyframes pureStaticFade {
-  0% { opacity: 0; }
-  20% { opacity: 1; }      /* Quickly fades in and holds perfectly still */
-  85% { opacity: 1; }      /* Remains still and visible until 2.5 seconds */
-  100% { opacity: 0; }     /* Smoothly fades out in place right before deletion */
-}
 
 
 
-
-  @keyframes slideUpFade {
-    0% { transform: translateY(30px); opacity: 0; }
-    20% { transform: translateY(0); opacity: 1; }
-    80% { transform: translateY(-10px); opacity: 1; }
-    100% { transform: translateY(-20px); opacity: 0; }
-  }
 
 /* Rows that contain multiple buttons */
   #sheetControl div,
