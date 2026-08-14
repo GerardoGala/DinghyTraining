@@ -44,10 +44,6 @@
     <div id="pointOfSailControl" class="flex-grow-1" style="flex: 1;">
         <h3>Point of Sail</h3>
         <label>
-            <input type="radio" name="pointOfSail" value="0">
-            Luffing
-        </label>
-        <label>
             <input type="radio" name="pointOfSail" value="45">
             Close Hauled
         </label>
@@ -258,23 +254,15 @@
       // Point of Sail selector
       document.querySelectorAll('input[name="pointOfSail"]')
           .forEach(radio => {
-
               radio.addEventListener('change', function () {
-
                   const heading = Number(this.value);
-
-                  // Set ILCA heading
                   window.globalSimulationData.ILCA.heading = heading;
-
                   console.log("Point of Sail:", this.nextSibling.textContent.trim());
                   console.log("Heading:", heading);
               });
 
           });
   </script>
-
-
-  
 
   <script type="module">
       import { launchSimulation } from "./js/app.js";

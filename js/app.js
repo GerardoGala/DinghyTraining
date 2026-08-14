@@ -42,8 +42,16 @@ async function loadConfig() {
           warningDiv.classList.remove("danger-shake");
         }
 
-        alert("Boom! You capsized! Make sure to hike out or ease your sheet when the wind picks up.");
-        stopSimulation();
+        alert("Boom! You capsized! Make sure to hike out or ease your sheet when the wind picks up. Wind is reset back to 7 knots.");
+        window.globalSimulationData.windSpeed = 7;
+        const windRadio = document.querySelector(
+            'input[name="wind"][value="7"]'
+        );
+
+        if (windRadio) {
+            windRadio.checked = true;
+        }
+        launchSimulation();
         return;
       }
 
