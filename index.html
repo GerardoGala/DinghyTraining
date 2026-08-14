@@ -68,9 +68,7 @@
       </label>
 
   </div>
-  <br>
-  <br>
-  <hr>
+
 
   <div id="input-pane">
 
@@ -152,43 +150,19 @@
 
   </div>
 
+  <style>
 
+    .row-directions .control-button {
+      flex: 1;
+    }
 
+    .row-adjustments .control-button {
+      flex: 1;
+    }
+  </style>
 
+  <style>
 
-
-
-<style>
-  .directional-controls {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; 
-  }
-
-  .control-row {
-    display: flex;
-    gap: 10px; 
-  }
-
-  .row-directions .control-button {
-    flex: 1;
-  }
-
-  .row-adjustments .control-button {
-    flex: 1;
-  }
-</style>
-
-<style>
-/* Container Layout */
-#input-pane {
-  display: flex;
-  flex-direction: column;
-  height: 300px;       /* Forces the pane to match the dashboard's 300px height */
-  background: #000;    /* Dark background to match the black divider theme */
-  padding: 6px;        /* Matches the outer border spacing */
-  box-sizing: border-box;
-}
 
 /* Hide inactive sections cleanly */
 .input-section:not(.active) {
@@ -206,22 +180,8 @@
   box-sizing: border-box;
 }
 
-/* Left and Right columns (Turn Starboard / Turn Port) */
-.control-side-column {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  height: 100%;
-}
 
-/* Middle column with the 3 stacked options */
-.control-center-column {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  height: 100%;
-  gap: 6px;            
-}
+
 
 /* Column layouts stretch buttons vertically */
 .control-column {
@@ -242,178 +202,105 @@
 }
 
 
-/* Buttons stretch to fill 100% of their available space evenly */
-.control-button {
-  background: #007bff;
-  color: white;
-  border: none;
-  flex: 1;                  /* Forces buttons in a row/column to share space equally */
-  height: 100%;
-  margin: 0;
-  padding: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-weight: bold;
-  font-size: 1.1rem;
-  box-sizing: border-box;
-  text-transform: uppercase;
-}
-</style>
 
-<style>
+  </style>
 
-.control-row {
-  display: flex;
-  gap: 10px;
-}
-
-.row-directions .control-button {
-  flex: 1;
-}
-
-.row-adjustments .control-button {
-  flex: 1;
-}
-
-/* Container Layout */
-/* Container Layout */
-#input-pane {
-  display: flex;
-  flex-direction: column;
-  height: 100%;        /* Fills exactly the leftover space provided by #input-container */
-  background: #000;    /* Dark background to match the black divider theme */
-  padding: 6px;        /* Matches the outer border spacing */
-  box-sizing: border-box;
-}
-
-/* Make active sections fill the container entirely and distribute rows evenly */
-.input-section.active {
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
-  height: 100%;
-  width: 100%;
-  gap: 6px;            /* Matches the black gap thickness from the dashboard */
-  box-sizing: border-box;
-}
-
-/* Row layouts distribute buttons horizontally across the screen */
-.control-row {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  flex: 1;             /* FORCES active rows to share the leftover space equally */
-  gap: 6px;            /* Adds uniform spacing between buttons */
-  min-height: 0;       /* Prevents buttons from expanding past the layout limit */
-}
-
-
-
-
-
-
-.control-side-column {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  height: 100%;
-}
-
-.control-center-column {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  height: 100%;
-  gap: 6px;
-}
-
-.control-column {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  gap: 6px;
-}
-
-/* Buttons stretch to fill 100% of their available space evenly */
-.control-button {
-  background: #007bff;
-  color: white;
-  border: none;
-  flex: 1;                  
-  height: 100%;
-  margin: 0;
-  padding: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-weight: bold;
-  font-size: 1.1rem;
-  box-sizing: border-box;
-  text-transform: uppercase;
-}
-
-.control-button.active {
-  background: #343a40 !important; /* dark accent */
-  color: #fff;
-  border: 2px solid #fff;
-}
-
-</style>
-
-
-<script>
-    // Point of Sail selector
-    document.querySelectorAll('input[name="pointOfSail"]')
-        .forEach(radio => {
-
-            radio.addEventListener('change', function () {
-
-                const heading = Number(this.value);
-
-                // Set ILCA heading
-                window.globalSimulationData.ILCA.heading = heading;
-
-                console.log("Point of Sail:", this.nextSibling.textContent.trim());
-                console.log("Heading:", heading);
-            });
-
-        });
-</script>
-
-
- 
-
-<script type="module">
-    import { launchSimulation } from "./js/app.js";
-    launchSimulation();
-</script>
-
-<script>
-    const beamReach = document.querySelector(
-        'input[name="pointOfSail"][value="90"]'
-    );
-
-    if (beamReach) {
-        beamReach.checked = true;
-        beamReach.dispatchEvent(new Event('change', { bubbles: true }));
+  <style>
+    .row-directions .control-button {
+      flex: 1;
     }
-</script>
 
-<script>
-    const params = new URLSearchParams(window.location.search);
-    const control = params.get("control");
-
-    const controlDiv = document.getElementById(control);
-
-    if (controlDiv) {
-        controlDiv.classList.add("active");
+    .row-adjustments .control-button {
+      flex: 1;
     }
-</script>
 
-  </body>
+
+    /* Make active sections fill the container entirely and distribute rows evenly */
+    .input-section.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: stretch;
+      height: 100%;
+      width: 100%;
+      gap: 6px;            /* Matches the black gap thickness from the dashboard */
+      box-sizing: border-box;
+    }
+
+    /* Buttons stretch to fill 100% of their available space evenly */
+    .control-button {
+      background: #007bff;
+      color: white;
+      border: none;
+      flex: 1;                  
+      height: 100%;
+      margin: 0;
+      padding: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-sizing: border-box;
+      text-transform: uppercase;
+    }
+
+    .control-button.active {
+      background: #343a40 !important; /* dark accent */
+      color: #fff;
+      border: 2px solid #fff;
+    }
+  </style>
+
+  <script>
+      // Point of Sail selector
+      document.querySelectorAll('input[name="pointOfSail"]')
+          .forEach(radio => {
+
+              radio.addEventListener('change', function () {
+
+                  const heading = Number(this.value);
+
+                  // Set ILCA heading
+                  window.globalSimulationData.ILCA.heading = heading;
+
+                  console.log("Point of Sail:", this.nextSibling.textContent.trim());
+                  console.log("Heading:", heading);
+              });
+
+          });
+  </script>
+
+
+  
+
+  <script type="module">
+      import { launchSimulation } from "./js/app.js";
+      launchSimulation();
+  </script>
+
+  <script>
+      const beamReach = document.querySelector(
+          'input[name="pointOfSail"][value="90"]'
+      );
+
+      if (beamReach) {
+          beamReach.checked = true;
+          beamReach.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+  </script>
+
+  <script>
+      const params = new URLSearchParams(window.location.search);
+      const control = params.get("control");
+
+      const controlDiv = document.getElementById(control);
+
+      if (controlDiv) {
+          controlDiv.classList.add("active");
+      }
+  </script>
+
+</body>
 </html>
