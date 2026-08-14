@@ -63,12 +63,6 @@ html, body {
     }
   }
 
-
-
-
-
-
-
 /* Rows that contain multiple buttons */
   #sheetControl div,
   #daggerboardControl div,
@@ -78,7 +72,7 @@ html, body {
   #downhaulControl div,
   #outhaulControl div{
     display: flex;          /* lay out buttons in a row */
-    gap: 6px;               /* consistent spacing */
+    gap: 2px;               /* consistent spacing */
     justify-content: center;
   }
 
