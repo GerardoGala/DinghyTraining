@@ -33,6 +33,7 @@ body {
 }
 
 
+
 /* =========================================================
    MAIN LAYOUT
    ========================================================= */
@@ -44,7 +45,10 @@ body {
     flex-direction: column;
     height: 100%;
 }
-
+.simulator-layout {
+    display: flex;
+    flex-direction: column;
+}
 
 /* Dashboard occupies only the space it needs */
 
