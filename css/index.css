@@ -47,7 +47,7 @@ body {
     height: 100%;
 }
 
-h4 {
+h4, button {
     margin-top: 0;
     margin-bottom: 0;
     padding: 0;
