@@ -124,3 +124,68 @@ input[type="radio"] {
 .control-button:hover {
   background-color: #edf2f7;
 }
+/* ==========================================
+   INPUT PANE & ACTIVE SECTIONS
+   ========================================== */
+#input-pane {
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+}
+
+/* Hide inactive sections */
+.input-section:not(.active) {
+  display: none !important;
+}
+
+/* Active control layout */
+.input-section.active {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 4px;
+  box-sizing: border-box;
+}
+
+.control-row {
+  display: flex;
+  gap: 4px;
+}
+
+.control-column {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Base button style (Unclicked) */
+.control-button {
+  flex: 1;
+  padding: 5px 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #4a5568;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  white-space: nowrap;
+}
+
+/* Hover state (Only changes background slightly on mouseover) */
+.control-button:hover {
+  background-color: #edf2f7;
+}
+
+/* =========================================================
+   🎯 THE FIX: THE HIGHLIGHT RULE FOR THE CURRENT SETTING
+   ========================================================= */
+/* Change '.selected' to match whatever class name your JS uses */
+.control-button.selected,
+.control-button.active-setting { 
+  background-color: #3182ce !important; /* Vivid Sea Blue */
+  color: #ffffff !important;            /* High-contrast White Text */
+  border-color: #2b6cb0 !important;      /* Darker Blue Border */
+  font-weight: bold !important;
+}
