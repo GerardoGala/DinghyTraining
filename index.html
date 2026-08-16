@@ -67,9 +67,9 @@
             Run
         </label>
     </div>
-    <div id="map"                style="flex: 7;">
+    <div id="map"                style="flex: 9;">
     </div>
-    <div id="input-pane"         style="flex: 1">
+    <div id="input-pane"         style="flex: 1;">
 
       <div id="boomControl" class="input-section">
         <h4>&nbsp;MainSheet</h4>
@@ -186,16 +186,49 @@
   </script>
 
 <script>
+    // 1. Handle the page load parameters (Your original logic)
     const params = new URLSearchParams(window.location.search);
-
     const control = params.get("control") || "sailorPositionControl";
-
     const controlDiv = document.getElementById(control);
 
     if (controlDiv) {
         controlDiv.classList.add("active");
     }
+
+    // 2. NEW LOGIC: Watch for button clicks to update the highlights instantly
+    // This listens to any click inside the document
+    document.addEventListener("click", function(event) {
+        // Check if the clicked item is a control button
+        if (event.target.classList.contains("control-button")) {
+            
+            // Find the parent section (like #boomControl or #vangControl)
+            const parentSection = event.target.closest(".input-section");
+            
+            if (parentSection) {
+                // Find any previously selected button in THIS section and clear it
+                const previousActive = parentSection.querySelector(".control-button.selected");
+                if (previousActive) {
+                    previousActive.classList.remove("selected");
+                }
+                
+                // Add the highlight class to the newly clicked button
+                event.target.classList.add("selected");
+            }
+        }
+    });
+
+    // ================================================================
+    // Placeholder functions so your HTML 'onclick' attributes don't error out
+    // Keep these if you haven't written the real logic for them yet!
+    // ================================================================
+    function updateBoomControl(val) { console.log("Boom set to:", val); }
+    function updateDaggerboardControl(val) { console.log("Daggerboard set to:", val); }
+    function updateSailorPosition(val) { console.log("Sailor position set to:", val); }
+    function updateVangControl(val) { console.log("Vang set to:", val); }
+    function updateDownhaulControl(val) { console.log("Downhaul set to:", val); }
+    function updateOuthaulControl(val) { console.log("Outhaul set to:", val); }
 </script>
+
 
   <script>
     document.querySelectorAll('input[name="wind"]').forEach(radio => {
