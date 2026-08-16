@@ -1,219 +1,126 @@
-/* =========================================================
-   DINGHY TRAINING
-   San Juan Academy Visual Theme
-   ========================================================= */
-
-
-/* =========================================================
-   COLOR VARIABLES
-   ========================================================= */
-
-:root {
-    --sja-blue: #3b87fa;
-    --sja-blue-dark: #2674e8;
-    --sja-background: #f0f7fc;
-    --sja-panel: #ffffff;
-    --sja-border: #cfe2f3;
-    --sja-text: #243447;
-}
-
-
-/* =========================================================
-   GLOBAL
-   ========================================================= */
-
-html,
+/* ==========================================
+   1. Base Page Styles (Tightly Compact)
+   ========================================== */
 body {
-    margin: 0;
-    font-family: "Segoe UI", sans-serif;
-    background-color: var(--sja-background);
-    color: var(--sja-text);
-    height: 100dvh;
-    overflow: hidden;
+  margin: 0;
+  padding: 6px; /* Tiny padding at the page edges */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #f4f7f6;
+  color: #333;
 }
 
+h4 {
+  margin: 0 0 6px 0; /* Minimal bottom gap */
+  color: #2c3e50;
+  font-size: 0.95rem; /* Slightly smaller headers */
+  border-bottom: 1px solid #e0e6ed;
+  padding-bottom: 2px;
+}
 
-
-/* =========================================================
-   MAIN LAYOUT
-   ========================================================= */
-
-/* Mobile: vertical stack */
-
+/* ==========================================
+   2. Layout Container 
+   ========================================== */
 .container {
-    display: flex;
-    flex-direction: column;
-    flex: 0 0 auto;
-    height: 50%;
-    border: 1px solid #5814c7;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Tighter gap between the 4 major divs */
+  width: 100%;
 }
 
-h4, button {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 10;
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    align-items: stretch;
+  }
 }
 
-/* Dashboard occupies only the space it needs */
-
-#dashboard-container {
-    flex: 0 0 auto;
+/* ==========================================
+   3. Individual Panel Blocks
+   ========================================== */
+#windControl, 
+#pointOfSailControl, 
+#map, 
+#input-pane {
+  background: #ffffff;
+  padding: 8px; /* Reduced box interior padding */
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
 }
 
-
-/* Input area consumes remaining space */
-
-#input-container {
-    flex: 1 1 0%;
-    min-height: 0;
+/* Map specific styling */
+#map {
+  min-height: 250px; /* Reduced default height to remain compact */
+  background-color: #e5e9f0;
+  border: 1px dashed #ccd4e0;
 }
 
-
-/* =========================================================
-   CONTROLS
-   ========================================================= */
-
-#controls {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    background-color: var(--sja-background);
-    padding: 12px;
-    box-sizing: border-box;
+/* ==========================================
+   4. Form Elements & Radio Buttons
+   ========================================== */
+label {
+  display: block;
+  margin-bottom: 4px; /* Snug spacing between options */
+  cursor: pointer;
+  font-size: 0.88rem;
 }
 
+input[type="radio"] {
+  margin-right: 4px;
+  vertical-align: middle;
+}
 
-/* =========================================================
-   INPUT SECTIONS
-   ========================================================= */
+/* ==========================================
+   5. Input Pane / Active Section
+   ========================================== */
+#input-pane {
+  display: flex;
+  flex-direction: column;
+  padding: 4px; /* Minimal padding around controls */
+}
 
 /* Hide inactive sections */
-
 .input-section:not(.active) {
-    display: none !important;
+  display: none !important;
 }
 
-
-/* Active section */
-
+/* Active section matches its exact text/button height */
 .input-section.active {
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-    height: 100%;
-    width: 100%;
-    gap: 2px;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 4px; /* Close spacing between button rows */
+  box-sizing: border-box;
 }
 
-
-/* =========================================================
-   CONTROL ROWS / COLUMNS
-   ========================================================= */
-
-.control-column {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    gap: 2px;
-}
-
-
+/* Row-based buttons alignment */
 .control-row {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    flex: 1;
-    gap: 2px;
-    min-height: 0;
+  display: flex;
+  gap: 4px; /* Minimal gap side-by-side */
 }
 
-
-/* Rows containing multiple buttons */
-
-#sheetControl div,
-#daggerboardControl div,
-#sailorPositionControl div,
-#ilcaControl div,
-#vangControl div,
-#downhaulControl div,
-#outhaulControl div {
-    display: flex;
-    gap: 2px;
-    justify-content: center;
+/* Column-based buttons alignment */
+.control-column {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Minimal gap stacked */
 }
 
-
-/* Direction and adjustment rows */
-
-.row-directions .control-button,
-.row-adjustments .control-button {
-    flex: 1;
-}
-
-
-/* =========================================================
-   CONTROL BUTTONS
-   ========================================================= */
-
+/* Modern, dense dashboard buttons */
 .control-button {
-    background: var(--sja-blue);
-    color: white;
-    border: none;
-
-    flex: 1;
-    height: 100%;
-    margin: 0;
-    padding: 10px;
-
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-family: "Segoe UI", sans-serif;
-    font-weight: bold;
-    font-size: 1.1rem;
-
-    box-sizing: border-box;
-    text-transform: uppercase;
-
-    border-radius: 4px;
+  flex: 1;
+  padding: 5px 8px; /* Smaller, tight padding inside buttons */
+  font-size: 0.85rem; /* Readable but small font */
+  font-weight: 500;
+  color: #4a5568;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
 }
 
-
-/* Active control button */
-
-.control-button.active {
-    background: var(--sja-blue-dark) !important;
-    color: #fff;
-    border: 2px solid #fff;
+.control-button:hover {
+  background-color: #edf2f7;
 }
-
-
-/* =========================================================
-   DESKTOP / LAPTOP
-   ========================================================= */
-
-@media screen and (min-width: 768px) {
-
-    .container {
-        flex-direction: row;
-    }
-
-    #map {
-        flex: 1;
-        width: auto;
-        border-bottom: none;
-    }
-
-    #controls {
-        flex: 0 0 300px;
-        width: 300px;
-        max-width: 300px;
-        border-right: 2px solid #333;
-    }
-}
-
-
