@@ -189,3 +189,14 @@ input[type="radio"] {
   border-color: #2b6cb0 !important;      /* Darker Blue Border */
   font-weight: bold !important;
 }
+
+#pointOfSailControl .point-of-sail-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    align-items: center;
+}
+
+#pointOfSailControl label {
+    white-space: nowrap;
+}
