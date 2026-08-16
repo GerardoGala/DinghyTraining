@@ -25,48 +25,60 @@
 </head>
 <body>
   <div class="container">
-    <div id="windControl"        style="flex: 1;">
-        <h4>&nbsp;Wind</h4>
-            <label>
-                <input type="radio" name="wind" value="7">
-                7 kt
-            </label>
+<div id="windControl">
+    <h4>Wind</h4>
 
-            <label>
-                <input type="radio" name="wind" value="14">
-                14 kt
-            </label>
+    <div style="display: flex; gap: 12px; align-items: center;">
 
-            <label>
-                <input type="radio" name="wind" value="21">
-                21 kt
-            </label>
+        <label>
+            <input type="radio" name="wind" value="7">
+            7 kt
+        </label>
+
+        <label>
+            <input type="radio" name="wind" value="14">
+            14 kt
+        </label>
+
+        <label>
+            <input type="radio" name="wind" value="21">
+            21 kt
+        </label>
+
     </div>
-    <div id="pointOfSailControl" style="flex: 1;">
-        <h4>&nbsp;Point of Sail</h4>
+</div>
+<div id="pointOfSailControl">
+    <h4>Point of Sail</h4>
+
+    <div class="point-of-sail-options" style="display: flex; gap: 12px; align-items: center;">
+
         <label>
             <input type="radio" name="pointOfSail" value="45">
             Close Hauled
         </label>
+
         <label>
             <input type="radio" name="pointOfSail" value="60">
             Close Reach
         </label>
-        <br>
+
         <label>
             <input type="radio" name="pointOfSail" value="90">
             Beam Reach
         </label>
-        <br>
+
         <label>
             <input type="radio" name="pointOfSail" value="135">
             Broad Reach
         </label>
+
         <label>
             <input type="radio" name="pointOfSail" value="180">
             Run
         </label>
+
     </div>
+</div>
     <div id="map"                style="flex: 9;">
     </div>
     <div id="input-pane"         style="flex: 1;">
