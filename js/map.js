@@ -152,183 +152,65 @@ export function updateWindControl(map) {
 // --- Refresh function to update ILCA status + time ---
 export function updateILCAControl() {
   if (!ilcaControlDiv) return;
-  if (window.globalSimulationData.raceFinished) return;
+  if (window.globalSimulationData.raceFinished) return; 
 
   const ilca = window.globalSimulationData.ILCA || {};
   const speedKnots = ilca.speed?.toFixed(1) || 0;
   const speedMS = (ilca.speed ? (ilca.speed * 0.514).toFixed(2) : "0.00");
   const heading = ilca.heading?.toFixed(0) || 0;
   const pointOfSail = ilca.pointOfSail || "Unknown";
-
+  
+  // ✅ CALCULATED DISPLAY: Convert the raw numerical timer to MM:SS string here
   const timer = formatTime(ilca.timer);
-
+ 
+  // ✅ PURE DISPLAY: Fetch values directly from the stored simulation object
   const uiRotation = ilca.clinometer || 0;
   const absoluteHeel = Math.abs(uiRotation);
 
-  // Heel color
-  let needleColor = "#38bdf8";
-
+  // Set visual alert gauge color thresholds purely from raw values
+  let needleColor = "#38bdf8"; // Safe Blue Zone
   if (absoluteHeel >= 38) {
-    needleColor = "#ef4444";
+    needleColor = "#ef4444";   // Danger Red Zone
   } else if (absoluteHeel >= 25) {
-    needleColor = "#f59e0b";
+    needleColor = "#f59e0b";   // Caution Orange Zone
   }
 
   ilcaControlDiv.innerHTML = `
+    <div><strong>ILCA Status</strong></div>
+    <svg xmlns="http://w3.org" width="50" height="50" viewBox="0 0 50 50" style="margin:4px 0;">
+      <circle cx="25" cy="25" r="22" fill="none" stroke="#ccc" stroke-width="2"/>
+      <text x="25" y="10" font-size="8" text-anchor="middle" fill="#666">N</text>
+      <g transform="rotate(${Number(heading)}, 25, 25)">
+        <line x1="25" y1="45" x2="25" y2="10" stroke="red" stroke-width="3" stroke-linecap="round"/>
+        <polygon points="25,5 20,15 30,15" fill="red" />
+      </g>
+    </svg>
+    <div>Heading: ${heading}°</div>
+    <div>Point of Sail: ${pointOfSail}</div>
+    <div>Speed: ${speedKnots} knots (${speedMS} m/s)</div>
+    <div>Timer: ${timer}</div>
 
-    <!-- ILCA STATUS TITLE -->
-    <div style="
-        grid-column: 1 / -1;
-        text-align: center;
-        font-size: 16px;
-        margin-bottom: 4px;">
-        <strong>ILCA Status</strong>
-    </div>
+<!-- --- PURE VIEW RETRO CLINOMETER DISPLAY --- -->
+<div id="clinometerBox" style="background: #ffffff; border: 1px solid #e2e8f0; padding: 8px; border-radius: 4px; margin-top: 8px; text-align: center; color: #1e293b; font-family: sans-serif;">
+    <div style="font-size: 11px; letter-spacing: 0.5px; color: #475569; font-weight: bold; margin-bottom: 6px; font-family: sans-serif;">HEEL CLINOMETER</div>
+    
+    <div style="position: relative; width: 100px; height: 50px; border: 1px solid #cbd5e1; border-radius: 50px 50px 0 0; background: #f8fafc; margin: 0 auto; overflow: hidden;">
+        <div style="position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: 100%; text-align: center; font-size: 8px; color: #94a3b8; bottom: 1px;">
+            45° [ 0° ] 45°
+        </div>
 
-    <!-- LEFT SIDE: COMPASS + STATUS -->
-    <div style="
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        min-width: 0;">
-
-        <!-- Compass -->
-        <svg xmlns="http://www.w3.org/2000/svg"
-             width="50"
-             height="50"
-             viewBox="0 0 50 50"
-             style="flex: 0 0 50px;">
-
-            <circle cx="25" cy="25" r="22"
-                    fill="none"
-                    stroke="#ccc"
-                    stroke-width="2"/>
-
-            <text x="25"
-                  y="10"
-                  font-size="8"
-                  text-anchor="middle"
-                  fill="#666">N</text>
-
-            <g transform="rotate(${Number(heading)}, 25, 25)">
-                <line x1="25"
-                      y1="45"
-                      x2="25"
-                      y2="10"
-                      stroke="red"
-                      stroke-width="3"
-                      stroke-linecap="round"/>
-
-                <polygon points="25,5 20,15 30,15"
-                         fill="red"/>
-            </g>
-        </svg>
-
-        <!-- Sailing information -->
-        <div style="
-            text-align: left;
-            line-height: 1.35em;
-            white-space: nowrap;">
-
-            <div>Heading: ${heading}°</div>
-            <div>Point of Sail: ${pointOfSail}</div>
-            <div>Speed: ${speedKnots} knots (${speedMS} m/s)</div>
-            <div>Timer: ${timer}</div>
-
+        <!-- Needle transforms react strictly to pre-calculated state variables -->
+        <div style="position: absolute; left: 50%; bottom: 0; width: 2px; height: 42px; background: ${needleColor}; transform-origin: bottom center; transform: translateX(-50%) rotate(${uiRotation}deg); transition: transform 0.2s ease-out;">
+            <div style="position: absolute; top: 0; left: -2px; width: 6px; height: 6px; background: #ef4444; border-radius: 50%;"></div>
         </div>
     </div>
 
-
-    <!-- RIGHT SIDE: HEEL CLINOMETER -->
-    <div id="clinometerBox"
-         style="
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            padding: 6px;
-            border-radius: 4px;
-            text-align: center;
-            color: #1e293b;
-            font-family: sans-serif;
-            width: 120px;
-            box-sizing: border-box;">
-
-        <div style="
-            font-size: 10px;
-            letter-spacing: 0.4px;
-            color: #475569;
-            font-weight: bold;
-            margin-bottom: 4px;">
-            HEEL CLINOMETER
-        </div>
-
-        <div style="
-            position: relative;
-            width: 100px;
-            height: 50px;
-            border: 1px solid #cbd5e1;
-            border-radius: 50px 50px 0 0;
-            background: #f8fafc;
-            margin: 0 auto;
-            overflow: hidden;">
-
-            <div style="
-                position: absolute;
-                left: 50%;
-                bottom: 1px;
-                transform: translateX(-50%);
-                width: 100%;
-                text-align: center;
-                font-size: 8px;
-                color: #94a3b8;">
-                45° [ 0° ] 45°
-            </div>
-
-            <!-- Needle -->
-            <div style="
-                position: absolute;
-                left: 50%;
-                bottom: 0;
-                width: 2px;
-                height: 42px;
-                background: ${needleColor};
-                transform-origin: bottom center;
-                transform:
-                    translateX(-50%)
-                    rotate(${uiRotation}deg);
-                transition: transform 0.2s ease-out;">
-
-                <div style="
-                    position: absolute;
-                    top: 0;
-                    left: -2px;
-                    width: 6px;
-                    height: 6px;
-                    background: #ef4444;
-                    border-radius: 50%;">
-                </div>
-
-            </div>
-        </div>
-
-        <div style="
-            margin-top: 4px;
-            font-size: 12px;
-            font-weight: bold;
-            color: #000000;">
-            Angle:
-            <span style="color: ${needleColor};">
-                ${Math.round(absoluteHeel)}°
-            </span>
-        </div>
-
+    <div style="margin-top: 6px; font-size: 12px; font-weight: bold; color: #000000;">
+        Angle: <span style="color: ${needleColor};">${Math.round(absoluteHeel)}°</span>
     </div>
+</div>
+
   `;
-
-  // Make the ILCA panel a compact two-column layout
-  ilcaControlDiv.style.display = "grid";
-  ilcaControlDiv.style.gridTemplateColumns = "1fr 120px";
-  ilcaControlDiv.style.columnGap = "8px";
-  ilcaControlDiv.style.alignItems = "center";
 }
 
 

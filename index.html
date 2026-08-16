@@ -52,6 +52,7 @@
             <input type="radio" name="pointOfSail" value="60">
             Close Reach
         </label>
+        <br>
         <label>
             <input type="radio" name="pointOfSail" value="90">
             Beam Reach
@@ -184,14 +185,17 @@
       }
   </script>
 
-  <script>
-      const params = new URLSearchParams(window.location.search);
-      const control = params.get("control");
-      const controlDiv = document.getElementById(control);
-      if (controlDiv) {
-          controlDiv.classList.add("active");
-      }
-  </script>
+<script>
+    const params = new URLSearchParams(window.location.search);
+
+    const control = params.get("control") || "sailorPositionControl";
+
+    const controlDiv = document.getElementById(control);
+
+    if (controlDiv) {
+        controlDiv.classList.add("active");
+    }
+</script>
 
   <script>
     document.querySelectorAll('input[name="wind"]').forEach(radio => {
